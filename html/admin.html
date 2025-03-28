@@ -27,6 +27,13 @@
         <ul class="nav_list">
             <li>
                 <a href="#">
+                    <i class="bi bi-person-circle"></i>
+                    <span class="links_name">Thông tin cá nhân</span>
+                </a>
+                <span class="tooltip">Thông tin cá nhân</span>  
+            </li>
+            <li>
+                <a href="#">
                     <i class='bx bxs-bar-chart-square'></i>
                     <span class="links_name">Thống kê dữ liệu</span>
                 </a>
@@ -71,20 +78,65 @@
     </div>
 
 
-
-
     <div class="home_content">
+        <div id="infoManagement" class="info_management" style="display: none;">
+            <h2 class="info_management-title">Thông tin cá nhân</h2>
+            <div class="info_management-content">
+        
+                <!-- Họ và Tên -->
+                <div class="info_management-row">
+                    <label class="info_management-label">Họ và Tên:</label>
+                    <div class="info_management-input-group">
+                        <input type="text" id="info_management-name" class="info_management-input" value="Nguyễn Văn A" disabled>
+                        <div class="info_management-button-group">
+                            <button id="info_management-edit-name" class="info_management-button">✏️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email (không chỉnh sửa, thêm placeholder) -->
+                <div class="info_management-row">
+                    <label class="info_management-label">Email:</label>
+                    <div class="info_management-input-group">
+                        <input type="email" id="info_management-email" class="info_management-input" value="nguyenvana@gmail.com" disabled>
+                        <div class="info_management-email-placeholder"></div> <!-- Placeholder để căn bằng -->
+                    </div>
+                </div>
+
+                <!-- Mật khẩu -->
+                <div class="info_management-row">
+                    <label class="info_management-label">Mật khẩu:</label>
+                    <div class="info_management-input-group">
+                        <input type="password" id="info_management-password" class="info_management-input" value="passwordcc" disabled>
+                        <div class="info_management-button-group">
+                            <button id="info_management-change-password" class="info_management-button">🔑</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        
+
+
         <div id="staticManagement" class="static_management" style="display: none;">
             <h2>Thống kê dữ liệu</h2>
         </div>
+        
 
 
         <div id="postManagement" class="post_management" style="display: none;">
             <h2>Quản lý bài viết</h2>
             <div class="search-container">
-                <div class="search-box">
-                    <input type="text" class="search-box-input" placeholder="Tìm kiếm...">
-                    <button class="search-box-btn"><i class="bi bi-search"></i></button>
+                <div class="search-container-box">
+                    <div class="search-box">
+                        <input type="text" placeholder="Tìm kiếm...">
+                        <label class="search-icon">
+                            <i class="bi bi-search"></i>
+                        </label>
+                    </div>
                 </div>
                 <button class="add-post-btn">Thêm bài báo</button>
             </div>
@@ -99,7 +151,7 @@
                         <th>Danh mục phụ</th>
                         <th>Nội dung bài báo</th>
                         <th>Trạng thái</th>
-                        <th>Chức năng</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,9 +165,9 @@
                         <td>Tôi muốn khỏe mạnh</td>
                         <td class="status">Đang chờ duyệt</td>
                         <td class-="actions-button">
-                            <button class="Post-btn-edit">Chỉnh sửa</button>
-                            <button class="Post-btn-delete">Xóa</button>
-                            <button class="Post-btn-approve">Duyệt bài</button> <!-- Chỉ hiển thị nếu bài đang chờ duyệt -->
+                            <button class="Post-btn-edit"><i class="bi bi-pencil-square"></i> Chỉnh sửa</button>
+                            <button class="Post-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
+                            <button class="Post-btn-approve"><i class="bi bi-check-circle" style="padding-top: 10px;"> </i>Duyệt bài</button> <!-- Chỉ hiển thị nếu bài đang chờ duyệt -->
                         </td>
                     </tr>
                     
@@ -129,37 +181,53 @@
                         <td>Đội CSGT số 6 nhận định,...</td>
                         <td class="status">Đang chờ duyệt</td>
                         <td class-="actions-button">
-                            <button class="Post-btn-edit">Chỉnh sửa</button>
-                            <button class="Post-btn-delete">Xóa</button>
+                            <button class="Post-btn-edit"><i class="bi bi-pencil-square"></i> Chỉnh sửa</button>
+                            <button class="Post-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
+                            <button class="Post-btn-approve"><i class="bi bi-check-circle"> </i>Duyệt bài</button> <!-- Chỉ hiển thị nếu bài đang chờ duyệt -->
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>2</td>
+                        <td>CSGT đón lõng 'ma men'</td>
+                        <td>Quang Nam</td>
+                        <td>.....</td>
+                        <td>Xã hội</td>
+                        <td>Giao thông</td>
+                        <td>Đội CSGT số 6 nhận định,...</td>
+                        <td class="status">Đã duyệt</td>
+                        <td class-="actions-button">
+                            <button class="Post-btn-edit"><i class="bi bi-pencil-square"></i> Chỉnh sửa</button>
+                            <button class="Post-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
                             <button class="Post-btn-approve">Duyệt bài</button> <!-- Chỉ hiển thị nếu bài đang chờ duyệt -->
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <div id="addPostModal" class="Postadd-modal-overlay">
-                <div class="Postadd-modal-content">
-                    <button class="Postadd-modal-close">&times;</button>
-                    <div class="Postadd-modal-header">
+            <div id="addPostModal" class="action-modal-overlay">
+                <div class="action-modal-content">
+                    <button class="action-modal-close">&times;</button>
+                    <div class="action-modal-header">
                         <h2>Thêm bài báo</h2>
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Tên Bài báo</label>
                         <input type="text" placeholder="Nhập tên bài báo">
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Tác giả</label>
                         <input type="text" placeholder="Nhập tên tác giả">
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Slug-Liên Kết</label>
                         <input type="text" placeholder="Nhập link bài báo">
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Danh mục chính</label>
                         <select id="mainCategory">
                             <option value="" disabled selected>Chọn danh mục chính</option>
@@ -172,20 +240,20 @@
                         </select>
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Danh mục phụ</label>
                         <select id="subCategory">
                             <option value="" disabled selected>Chọn danh mục phụ</option>
                         </select>
                     </div>
                     
-                    <div class="Postadd-form-group" style="grid-column: 1 / -1;">
+                    <div class="action-form-group" style="grid-column: 1 / -1;">
                         <label>Nội dung bài báo</label>
                         <textarea placeholder="Nhập nội dung bài báo"></textarea>
                     </div>
                     
-                    <div class="Postadd-modal-footer">
-                        <button class="btn-add-post">Thêm bài báo</button>
+                    <div class="action-modal-footer">
+                        <button class="btn-add">Thêm bài báo</button>
                     </div>
                 </div>
             </div>
@@ -200,29 +268,29 @@
                 </div>
             </div>
 
-            <div id="editPostModal" class="Postadd-modal-overlay">
-                <div class="Postadd-modal-content">
-                    <button class="Postadd-modal-close">&times;</button>
-                    <div class="Postadd-modal-header">
+            <div id="editPostModal" class="action-modal-overlay">
+                <div class="action-modal-content">
+                    <button class="action-modal-close">&times;</button>
+                    <div class="action-modal-header">
                         <h2>Chỉnh sửa bài báo</h2>
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Tên Bài báo</label>
                         <input type="text" id="editPostTitle" placeholder="Nhập tên bài báo">
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Tác giả</label>
                         <input type="text" id="editPostAuthor" placeholder="Nhập tên tác giả">
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Slug-Liên Kết</label>
                         <input type="text" id="editPostSlug" placeholder="Nhập link bài báo">
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Danh mục chính</label>
                         <select id="editMainCategory">
                             <option value="" disabled selected>Chọn danh mục chính</option>
@@ -235,26 +303,26 @@
                         </select>
                     </div>
                     
-                    <div class="Postadd-form-group">
+                    <div class="action-form-group">
                         <label>Danh mục phụ</label>
                         <select id="editSubCategory">
                             <option value="" disabled selected>Chọn danh mục phụ</option>
                         </select>
                     </div>
                     
-                    <div class="Postadd-form-group" style="grid-column: 1 / -1;">
+                    <div class="action-form-group" style="grid-column: 1 / -1;">
                         <label>Nội dung bài báo</label>
                         <textarea id="editPostContent" placeholder="Nhập nội dung bài báo"></textarea>
                     </div>
                     
-                    <div class="Postadd-modal-footer">
-                        <button id="btnUpdatePost" class="btn-add-post">Cập nhật bài báo</button>
+                    <div class="action-modal-footer">
+                        <button id="btnUpdatePost" class="btn-edit">Cập nhật bài báo</button>
                     </div>
                 </div>
             </div>
 
-            <div id="deleteModal" class="modal">
-                <div class="modal-content-approveModal">
+            <div id="deletePostModal" class="delete-modal">
+                <div class="modal-content-deleteModal">
                     <p>Bạn có chắc chắn muốn xóa bài báo này không?</p>
                     <div class="modal-buttons">
                         <button id="confirmDelete" class="btn-confirm">Có</button>
@@ -267,13 +335,16 @@
         </div>
 
 
-        <!-- Add this inside the category management div in your existing HTML -->
         <div id="categoryManagement" class="category_management" style="display: none;">
             <h2>Quản lý danh mục</h2>
             <div class="search-container">
-                <div class="search-box">
-                    <input type="text" class="search-box-input" placeholder="Tìm kiếm...">
-                    <button class="search-box-btn"><i class="bi bi-search"></i></button>
+                <div class="search-container-box">
+                    <div class="search-box">
+                        <input type="text" placeholder="Tìm kiếm...">
+                        <label class="search-icon">
+                            <i class="bi bi-search"></i>
+                        </label>
+                    </div>
                 </div>
                 <button class="add-category-btn">Thêm danh mục</button>
             </div>
@@ -284,7 +355,7 @@
                         <th>Tên danh mục</th>
                         <th>Danh mục cha</th>
                         <th>Số lượng bài báo</th>
-                        <th>Chức năng</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -294,8 +365,8 @@
                         <td>Không</td>
                         <td>?</td>
                         <td class="actions-button">
-                            <button class="Category-btn-edit">Chỉnh sửa</button>
-                            <button class="Category-btn-delete">Xóa</button>
+                            <button class="Category-btn-edit"><i class="bi bi-pencil-square"></i> Chỉnh sửa</button>
+                            <button class="Category-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
                         </td>
                     </tr>
                     <tr>
@@ -304,8 +375,8 @@
                         <td>Thể thao</td>
                         <td>?</td>
                         <td class="actions-button">
-                            <button class="Category-btn-edit">Chỉnh sửa</button>
-                            <button class="Category-btn-delete">Xóa</button>
+                            <button class="Category-btn-edit"><i class="bi bi-pencil-square"></i> Chỉnh sửa</button>
+                            <button class="Category-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
                         </td>
                     </tr>
                     <tr>
@@ -314,26 +385,26 @@
                         <td>Sức khỏe</td>
                         <td>?</td>
                         <td class="actions-button">
-                            <button class="Category-btn-edit">Chỉnh sửa</button>
-                            <button class="Category-btn-delete">Xóa</button>
+                            <button class="Category-btn-edit"><i class="bi bi-pencil-square"></i> Chỉnh sửa</button>
+                            <button class="Category-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <div id="addCategoryModal" class="Categoryadd-modal-overlay">
-                <div class="Categoryadd-modal-content">
-                    <button class="Categoryadd-modal-close">&times;</button>
-                    <div class="Categoryadd-modal-header">
+            <div id="addCategoryModal" class="action-modal-overlay">
+                <div class="action-modal-content">
+                    <button class="action-modal-close">&times;</button>
+                    <div class="action-modal-header">
                         <h2>Thêm danh mục</h2>
                     </div>
                     
-                    <div class="Categoryadd-form-group">
+                    <div class="action-form-group">
                         <label>Tên danh mục</label>
                         <input type="text" placeholder="Nhập tên danh mục">
                     </div>
                     
-                    <div class="Categoryadd-form-group">
+                    <div class="action-form-group">
                         <label>Danh mục cha</label>
                         <select id="mainCategory">
                             <option value="" disabled selected>Chọn danh mục cha</option>
@@ -348,30 +419,30 @@
                     </div>
                 
                     
-                    <div class="Categoryadd-form-group" >
+                    <div class="action-form-group" >
                         <label>Số lượng bài báo</label>
                         <input type="text" placeholder="Nhập số lượng bài báo">
                     </div>
                     
-                    <div class="Categoryadd-modal-footer">
-                        <button class="btn-add-post">Thêm bài báo</button>
+                    <div class="action-modal-footer">
+                        <button class="btn-add">Thêm danh mục</button>
                     </div>
                 </div>
             </div>
 
-            <div id="editCategoryModal" class="Categoryadd-modal-overlay">
-                <div class="Categoryadd-modal-content">
-                    <button class="Categoryadd-modal-close">&times;</button>
-                    <div class="Categoryadd-modal-header">
-                        <h2>Chỉnh sửa bài báo</h2>
+            <div id="editCategoryModal" class="action-modal-overlay">
+                <div class="action-modal-content">
+                    <button class="action-modal-close">&times;</button>
+                    <div class="action-modal-header">
+                        <h2>Chỉnh sửa danh mục</h2>
                     </div>
                     
-                    <div class="Categoryadd-form-group">
+                    <div class="action-form-group">
                         <label>Tên Danh mục</label>
                         <input type="text" id="editCategoryName" placeholder="Nhập tên danh mục">
                     </div>
                     
-                    <div class="Categoryadd-form-group">
+                    <div class="action-form-group">
                         <label>Danh mục cha</label>
                         <select id="editParentCategory">
                             <option value="" disabled selected>Chọn danh mục cha</option>
@@ -385,20 +456,20 @@
                         </select>
                     </div>
                     
-                    <div class="Categoryadd-form-group" style="grid-column: 1 / -1;">
+                    <div class="action-form-group" style="grid-column: 1 / -1;">
                         <label>Số lượng bài báo của danh mục</label>
                         <input type="text" id="editNumberPost">
                     </div>
                     
-                    <div class="Categoryadd-modal-footer">
-                        <button id="btnUpdateCategory" class="btn-add-category">Cập nhật danh mục</button>
+                    <div class="action-modal-footer">
+                        <button id="btnUpdateCategory" class="btn-edit">Cập nhật danh mục</button>
                     </div>
                 </div>
             </div>
 
-            <div id="deleteModal" class="modal">
-                <div class="modal-content-approveModal">
-                    <p>Bạn có chắc chắn muốn xóa bài báo này không?</p>
+            <div id="deleteCategoryModal" class="delete-modal">
+                <div class="modal-content-deleteModal">
+                    <p>Bạn có chắc chắn muốn xóa danh mục này không?</p>
                     <div class="modal-buttons">
                         <button id="confirmDelete" class="btn-confirm">Có</button>
                         <button id="cancelDelete" class="btn-cancel">Không</button>
@@ -411,16 +482,17 @@
         <div id="userManagement" class="user_management" style="display: none;">
             <div class="section-card">
                 <h2 class="section-title">Quản lý người dùng</h2>
-                <div class="section-actions">
-                    
-                    <div class="search-wrapper">
-                        <button class="btn-search btn-red">
-                            <i class="bi bi-search"></i>
-                            <input type="text" class="search-input" placeholder="Tìm kiếm người dùng...">
-                        </button>
+                <div class="search-container">
+                    <div class="search-container-box">
+                        <div class="search-box">
+                            <input type="text" placeholder="Tìm kiếm...">
+                            <label class="search-icon">
+                                <i class="bi bi-search"></i>
+                            </label>
+                        </div>
                     </div>
                     <button class="btn-primary btn-add-user">
-                        <i class="bi bi-plus-lg"></i> Thêm người dùng
+                         Thêm người dùng
                     </button>
                 </div>
                 <div class="table-responsive">
@@ -444,9 +516,7 @@
                                 <td>********</td>
                                 <td>
                                     <div class="user-actions">
-                                        <button class="btn-action btn-delete">
-                                            <i class="bi bi-trash"></i> Xóa
-                                        </button>
+                                        <button class="User-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
                                         <div class="toggle-switch">
                                             <input type="checkbox" id="userToggle1" class="toggle-input" checked>
                                             <label for="userToggle1" class="toggle-label"></label>
@@ -462,9 +532,7 @@
                                 <td>********</td>
                                 <td>
                                     <div class="user-actions">
-                                        <button class="btn-action btn-delete">
-                                            <i class="bi bi-trash"></i> Xóa
-                                        </button>
+                                        <button class="User-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
                                         <div class="toggle-switch">
                                             <input type="checkbox" id="userToggle2" class="toggle-input" checked>
                                             <label for="userToggle2" class="toggle-label"></label> 
@@ -476,43 +544,52 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div id="modal-container" style="display: none;">
-            <div class="modal-overlay">
-                <div class="modal-content">
-                    <button class="modal-close-btn">&times;</button>
-                    <h2 class="modal-title">Thêm người dùng</h2>
-                    <form id="addUserForm" class="modal-form">
-                        <div>
-                            <label>Tên người dùng</label>
-                            <input type="text" name="tenNguoiDung" required placeholder="Nhập tên người dùng">
-                        </div>
-                        <div>
-                            <label>Email</label>
-                            <input type="email" name="email" required placeholder="Nhập email">
-                        </div>
-                        <div>
-                            <label>Tài khoản</label>
-                            <input type="text" name="taiKhoan" required placeholder="Nhập tài khoản">
-                        </div>
-                        <div>
-                            <label>Mật khẩu</label>
-                            <input type="password" name="matKhau" required placeholder="Nhập mật khẩu">
-                        </div>
-                        <div class="form-submit-wrapper">
-                            <button type="submit" class="modal-submit-btn">Thêm người dùng</button>
-                        </div>
-                    </form>
+
+            <div id="modal-container" style="display: none;">
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <button class="modal-close-btn">&times;</button>
+                        <h2 class="modal-title">Thêm người dùng</h2>
+                        <form id="addUserForm" class="modal-form">
+                            <div>
+                                <label>Tên người dùng</label>
+                                <input type="text" name="tenNguoiDung" required placeholder="Nhập tên người dùng">
+                            </div>
+                            <div>
+                                <label>Email</label>
+                                <input type="email" name="email" required placeholder="Nhập email">
+                            </div>
+                            <div>
+                                <label>Tài khoản</label>
+                                <input type="text" name="taiKhoan" required placeholder="Nhập tài khoản">
+                            </div>
+                            <div>
+                                <label>Mật khẩu</label>
+                                <input type="password" name="matKhau" required placeholder="Nhập mật khẩu">
+                            </div>
+                            <div class="form-submit-wrapper">
+                                <button type="submit" class="modal-submit-btn">Thêm người dùng</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="deleteUserModal" class="delete-modal">
+                <div class="modal-content-deleteModal">
+                    <p>Bạn có chắc chắn muốn xóa người dùng này không?</p>
+                    <div class="modal-buttons">
+                        <button id="confirmDelete" class="btn-confirm">Có</button>
+                        <button id="cancelDelete" class="btn-cancel">Không</button>
+                    </div>
                 </div>
             </div>
         </div>
         
-    
-
 
         <div id="commentManagement" class="comment_management" style="display: none;">
             <div class="section-card">
-                <h2 class="section-title">Quản lý bình luận</h2>
+                <h2 class="section-title" style="margin-bottom: 70px;">Quản lý bình luận</h2>
                 <div class="table-responsive">
                     <table class="dashboard-table">
                         <thead>
@@ -522,7 +599,7 @@
                                 <th>Bài viết</th>
                                 <th>Nội dung bình luận</th>
                                 <th>Ngày bình luận</th>
-                                <th>Trạng thái</th>
+                                <!-- <th>Trạng thái</th> -->
                                 <th>Hành động</th>
                             </tr>
                         </thead>
@@ -533,18 +610,16 @@
                                 <td>Ngủ đủ giấc</td>
                                 <td>Bài viết rất hữu ích. Cảm ơn!</td>
                                 <td>12/03/2025</td>
-                                <td>
+                                <!-- <td>
                                     <span class="comment-status pending">Chưa duyệt</span>
-                                </td>
+                                </td> -->
                                 <td>
                                     <div class="action-group">
-                                        <button class="btn-action btn-delete">
-                                            <i class="bi bi-trash"></i> Xóa
-                                        </button>
+                                        <button class="Comment-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
 
-                                        <button class="btn-action btn-approve">
+                                        <!-- <button class="btn-action btn-approve">
                                             <i class="bi bi-check-circle"></i> Duyệt
-                                        </button>
+                                        </button> -->
                                     </div>
                                 </td>
                             </tr>
@@ -554,23 +629,33 @@
                                 <td>Dinh dưỡng hàng ngày</td>
                                 <td>Tôi đã áp dụng và thấy hiệu quả.</td>
                                 <td>14/03/2025</td>
-                                <td>
+                                <!-- <td>
                                     <span class="comment-status pending">Chưa duyệt</span>
-                                </td>
+                                </td> -->
                                 <td>
                                     <div class="action-group">
-                                        <button class="btn-action btn-delete">
-                                            <i class="bi bi-trash"></i> Xóa
-                                        </button>
+                                        <button class="Comment-btn-delete"><i class="bi bi-trash"></i> Xóa</button>
                                         
-                                        <button class="btn-action btn-approve">
+                                        <!-- <button class="btn-action btn-approve">
                                             <i class="bi bi-check-circle"></i> Duyệt
-                                        </button>
+                                        </button> -->
+
+                                        
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <div id="deleteCommentModal" class="delete-modal">
+                <div class="modal-content-deleteModal">
+                    <p>Bạn có chắc chắn muốn xóa bình luận này không?</p>
+                    <div class="modal-buttons">
+                        <button id="confirmDelete" class="btn-confirm">Có</button>
+                        <button id="cancelDelete" class="btn-cancel">Không</button>
+                    </div>
                 </div>
             </div>
         </div>

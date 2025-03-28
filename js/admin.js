@@ -20,6 +20,7 @@ btn.onclick = function() {
 document.addEventListener("DOMContentLoaded", function () {
     let menuItems = document.querySelectorAll(".nav_list li a");
     let sections = {
+        "Thông tin cá nhân": document.getElementById("infoManagement"),
         "Thống kê dữ liệu": document.getElementById("staticManagement"),
         "Quản lý bài viết": document.getElementById("postManagement"),
         "Quản lý danh mục": document.getElementById("categoryManagement"),
@@ -83,24 +84,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    //  Khi nhấn "Có" => Cập nhật trạng thái, ẩn nút "Duyệt bài"
-    confirmApproveBtn.addEventListener("click", function () {
-        if (currentRow) {
-            let statusCell = currentRow.querySelector(".status");
-            statusCell.innerText = "Đã duyệt";
+    // //  Khi nhấn "Có" => Cập nhật trạng thái, ẩn nút "Duyệt bài"
+    // confirmApproveBtn.addEventListener("click", function () {
+    //     if (currentRow) {
+    //         let statusCell = currentRow.querySelector(".status");
+    //         statusCell.innerText = "Đã duyệt";
 
-            let approveButton = currentRow.querySelector(".Post-btn-approve");
-            if (approveButton) {
-                approveButton.remove(); // Xóa nút "Duyệt bài"
-            }
-        }
-        approveModal.style.display = "none"; // Đóng modal
-    });
+    //         let approveButton = currentRow.querySelector(".Post-btn-approve");
+    //         if (approveButton) {
+    //             approveButton.remove(); // Xóa nút "Duyệt bài"
+    //         }
+    //     }
+    //     approveModal.style.display = "none"; // Đóng modal
+    // });
 
-    //  Đóng modal khi nhấn "Không"
-    cancelApproveBtn.addEventListener("click", function () {
-        approveModal.style.display = "none"; // Ẩn modal khi chọn "Không"
-    });
+    // //  Đóng modal khi nhấn "Không"
+    // cancelApproveBtn.addEventListener("click", function () {
+    //     approveModal.style.display = "none"; // Ẩn modal khi chọn "Không"
+    // });
 
     //  Đóng modal khi nhấn bên ngoài nội dung modal
     window.addEventListener("click", function (event) {
@@ -146,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     const addPostBtn = document.querySelector(".add-post-btn");
     const addPostModal = document.getElementById("addPostModal");
-    const closeModalBtn = addPostModal.querySelector(".Postadd-modal-close");
+    const closeModalBtn = addPostModal.querySelector(".action-modal-close");
     const mainCategorySelect = document.getElementById('mainCategory');
     const subCategorySelect = document.getElementById('subCategory');
 
@@ -194,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
     const editPostModal = document.getElementById("editPostModal");
-    const closeModalBtn = editPostModal.querySelector(".Postadd-modal-close");
+    const closeModalBtn = editPostModal.querySelector(".action-modal-close");
     const btnUpdatePost = document.getElementById("btnUpdatePost");
     const editMainCategory = document.getElementById('editMainCategory');
     const editSubCategory = document.getElementById('editSubCategory');
@@ -313,7 +314,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const deleteModal = document.getElementById("deleteModal");
+    const deletePostModal = document.getElementById("deletePostModal");
     const confirmDeleteBtn = document.getElementById("confirmDelete");
     const cancelDeleteBtn = document.getElementById("cancelDelete");
     let currentRowToDelete = null;
@@ -322,27 +323,15 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".Post-btn-delete").forEach(button => {
         button.addEventListener("click", function() {
             currentRowToDelete = this.closest("tr");
-            deleteModal.style.display = "flex";
+            deletePostModal.style.display = "flex";
         });
     });
 
-    // Confirm delete - remove the row
-    confirmDeleteBtn.addEventListener("click", function() {
-        if (currentRowToDelete) {
-            currentRowToDelete.remove();
-            deleteModal.style.display = "none";
-        }
-    });
-
-    // Cancel delete - close the modal
-    cancelDeleteBtn.addEventListener("click", function() {
-        deleteModal.style.display = "none";
-    });
 
     // Close modal when clicking outside
     window.addEventListener("click", function(event) {
-        if (event.target === deleteModal) {
-            deleteModal.style.display = "none";
+        if (event.target === deletePostModal) {
+            deletePostModal.style.display = "none";
         }
     });
 });
@@ -351,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     const addCategoryBtn = document.querySelector(".add-category-btn");
     const addCategoryModal = document.getElementById("addCategoryModal");
-    const closeModalBtn = addCategoryModal.querySelector(".Categoryadd-modal-close");
+    const closeModalBtn = addCategoryModal.querySelector(".action-modal-close");
 
     // Open modal
     addCategoryBtn.addEventListener("click", function() {
@@ -572,18 +561,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function createDeleteModal() {
     const modal = document.createElement('div');
     modal.id = 'deleteConfirmModal';
-    modal.innerHTML = `
-        <div class="modal-overlay">
-            <div class="modal-content">
-         
-                <p class="modal-message"></p>
-                <div class="modal-buttons">
-                    <button id="confirmDelete" class="btn btn-confirm">Có</button>
-                    <button id="cancelDelete" class="btn btn-cancel">Không</button>
-                </div>
-            </div>
-        </div>
-    `;
     document.body.appendChild(modal);
 
     return modal;
@@ -601,7 +578,7 @@ function setupDeleteConfirmation() {
     let rowToDelete = null;
 
     // Lắng nghe sự kiện nút xóa ở cả 2 bảng
-    document.querySelectorAll('.user_management .btn-delete, .comment_management .btn-delete').forEach(deleteButton => {
+    document.querySelectorAll('.user_management .User-btn-delete, .comment_management .Comment-btn-delete').forEach(deleteButton => {
         deleteButton.addEventListener('click', function() {
             // Xác định loại xóa và thông điệp
             const isUserDelete = this.closest('.user_management') !== null;
@@ -648,8 +625,6 @@ function setupDeleteConfirmation() {
 
 
 
-
-
 // Chạy setup khi trang tải xong
 document.addEventListener('DOMContentLoaded', setupDeleteConfirmation);
 function showAddUserModal() {
@@ -684,3 +659,186 @@ function showAddUserModal() {
 
 // Gắn sự kiện cho nút Thêm người dùng
 document.querySelector('.btn-add-user').addEventListener('click', showAddUserModal);
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const deleteCategoryModal = document.getElementById("deleteCategoryModal");
+    const confirmDeleteBtn = document.getElementById("confirmDelete");
+    const cancelDeleteBtn = document.getElementById("cancelDelete");
+    let currentRowToDelete = null;
+
+    // Add event listeners to all delete buttons
+    document.querySelectorAll(".Category-btn-delete").forEach(button => {
+        button.addEventListener("click", function() {
+            currentRowToDelete = this.closest("tr");
+            deleteCategoryModal.style.display = "flex";
+        });
+    });
+
+    // Confirm delete - remove the row
+    confirmDeleteBtn.addEventListener("click", function() {
+        if (currentRowToDelete) {
+            currentRowToDelete.remove();
+            deleteCategoryModal.style.display = "none";
+        }
+    });
+
+    // Cancel delete - close the modal
+    cancelDeleteBtn.addEventListener("click", function() {
+        deleteCategoryModal.style.display = "none";
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener("click", function(event) {
+        if (event.target === deleteCategoryModal) {
+            deleteCategoryModal.style.display = "none";
+        }
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const editCategoryModal = document.getElementById("editCategoryModal");
+    const closeModalBtn = editCategoryModal.querySelector(".action-modal-close");
+    const btnUpdateCategory = document.getElementById("btnUpdateCategory");
+
+    const editCategoryName = document.getElementById("editCategoryName");
+    const editParentCategory = document.getElementById("editParentCategory");
+    const editNumberPost = document.getElementById("editNumberPost");
+
+    // Bắt sự kiện click để mở modal chỉnh sửa
+    const editButtons = document.querySelectorAll(".Category-btn-edit");
+    editButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const row = this.closest("tr");
+            populateEditModal(row);
+            editCategoryModal.style.display = "flex"; // Hiển thị modal
+        });
+    });
+
+    // Đóng modal khi bấm vào nút đóng
+    closeModalBtn.addEventListener("click", function () {
+        editCategoryModal.style.display = "none";
+    });
+
+    // Đóng modal khi bấm ra ngoài
+    editCategoryModal.addEventListener("click", function (event) {
+        if (event.target === editCategoryModal) {
+            editCategoryModal.style.display = "none";
+        }
+    });
+
+    // Hàm điền dữ liệu vào modal chỉnh sửa
+    function populateEditModal(row) {
+        const cells = row.getElementsByTagName('td');
+
+        editCategoryName.value = cells[1].textContent; // Tên danh mục
+        editNumberPost.value = cells[3].textContent; // Số lượng bài báo
+
+        // Lấy giá trị danh mục cha
+        const parentCategoryText = cells[2].textContent.trim(); // Lấy text trong ô "Danh mục cha"
+        
+        // Kiểm tra nếu không có danh mục cha (hiển thị "Không"), chọn option "none"
+        Array.from(editParentCategory.options).forEach(option => {
+            if (option.textContent.trim() === parentCategoryText) {
+                editParentCategory.value = option.value;
+            }
+        });
+    }
+
+    // Cập nhật dữ liệu sau khi nhấn nút "Cập nhật danh mục"
+    btnUpdateCategory.addEventListener('click', function () {
+        const row = document.querySelector("table tbody tr.editing-row");
+
+        if (row) {
+            const cells = row.getElementsByTagName('td');
+
+            cells[1].textContent = editCategoryName.value; // Cập nhật tên danh mục
+            cells[2].textContent = editParentCategory.options[editParentCategory.selectedIndex].text; // Cập nhật danh mục cha
+            cells[3].textContent = editNumberPost.value; // Cập nhật số lượng bài báo
+
+            row.classList.remove('editing-row'); // Xóa trạng thái chỉnh sửa
+            editCategoryModal.style.display = "none"; // Đóng modal
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const deleteUserModal = document.getElementById("deleteUserModal");
+    const confirmDeleteBtn = document.getElementById("confirmDelete");
+    const cancelDeleteBtn = document.getElementById("cancelDelete");
+    let currentRowToDelete = null;
+
+    // Add event listeners to all delete buttons
+    document.querySelectorAll(".User-btn-delete").forEach(button => {
+        button.addEventListener("click", function() {
+            currentRowToDelete = this.closest("tr");
+            deleteUserModal.style.display = "flex";
+        });
+    });
+
+    // Confirm delete - remove the row
+    confirmDeleteBtn.addEventListener("click", function() {
+        if (currentRowToDelete) {
+            currentRowToDelete.remove();
+            deleteUserModal.style.display = "none";
+        }
+    });
+
+    // Cancel delete - close the modal
+    cancelDeleteBtn.addEventListener("click", function() {
+        deleteUserModal.style.display = "none";
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener("click", function(event) {
+        if (event.target === deleteUserModal) {
+            deleteUserModal.style.display = "none";
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const deleteCommentModal = document.getElementById("deleteCommentModal");
+    const confirmDeleteBtn = document.getElementById("confirmDelete");
+    const cancelDeleteBtn = document.getElementById("cancelDelete");
+    let currentRowToDelete = null;
+
+    // Add event listeners to all delete buttons
+    document.querySelectorAll(".Comment-btn-delete").forEach(button => {
+        button.addEventListener("click", function() {
+            currentRowToDelete = this.closest("tr");
+            deleteCommentModal.style.display = "flex";
+        });
+    });
+
+    // Confirm delete - remove the row
+    confirmDeleteBtn.addEventListener("click", function() {
+        if (currentRowToDelete) {
+            currentRowToDelete.remove();
+            deleteCommentModal.style.display = "none";
+        }
+    });
+
+    // Cancel delete - close the modal
+    cancelDeleteBtn.addEventListener("click", function() {
+        deleteCommentModal.style.display = "none";
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener("click", function(event) {
+        if (event.target === deleteCommentModal) {
+            deleteCommentModal.style.display = "none";
+        }
+    });
+});
+
+
+
+
+
+

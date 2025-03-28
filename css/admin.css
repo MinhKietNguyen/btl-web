@@ -286,6 +286,99 @@ body {
     left: 240px;
 }
 
+.info_management {
+    width: 400px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    text-align: center;
+}
+
+.info_management-title {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.info_management-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info_management-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.info_management-label {
+    font-weight: bold;
+    color: #555;
+}
+
+.info_management-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.info_management-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.info_management-input:disabled {
+    background: #f4f4f4;
+    color: #777;
+}
+
+/* Nhóm nút bấm để không ảnh hưởng đến input */
+.info_management-button-group {
+    display: flex;
+    gap: 5px;
+}
+
+/* Ảo hóa khoảng trống cho ô Email */
+.info_management-email-placeholder {
+    width: 40px; /* Độ rộng bằng nút bấm để căn đều */
+    visibility: hidden;
+}
+
+
+/* Nút bấm */
+.info_management-button {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.info_management-button:hover {
+    background-color: #0056b3;
+}
+
+.save-button {
+    background-color: #28a745;
+}
+
+.save-button:hover {
+    background-color: #218838;
+}
+
 
 
 
@@ -337,6 +430,19 @@ body {
     margin: 20px;
 }
 
+.info_management h2 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.static_management h2 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+}
 
 .post_management h2 {
     font-size: 35px;
@@ -468,6 +574,24 @@ table td {
     cursor: pointer;
 }
 
+.User-btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Comment-btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .Post-btn-approve {
     background-color: #2ecc71;
     color: white;
@@ -475,6 +599,7 @@ table td {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 5px;
 }
 
 /* Ẩn nút duyệt bài nếu bị ẩn bằng JavaScript */
@@ -551,53 +676,60 @@ table td {
     margin-bottom: 15px;
 }
 
+.search-container-box {
+    position: relative;
+}
+
+
 .search-box {
     display: flex;
     align-items: center;
-    height: 40px;
+    background: whitesmoke;
     border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-    overflow: hidden;
+    padding: 8px 15px;
+    width: 200px;
 }
 
-.search-box-input {
-    width: 0;
-    opacity: 0;
-    border: 1px solid #ced4da;
-    padding: 0;
-    outline: none;
+.search-box input[type="text"] {
     background: transparent;
-    transition: all 0.3s ease-in-out;
-    font-size: 14px;
-    height: 40px;
+    border: none;
+    color: black;
+    flex-grow: 1;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
 }
 
-.search-box-btn {
-    background-color: #B32A45;
-    border: none;
-    color: white;
-    width: 40px;
-    height: 40px;
+.search-icon {
+    color: #B32A45;
+    cursor: pointer;
+    margin-left: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
+}
+
+.search-icon i {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(179, 42, 69, 0.3);
+}
+
+.search-container button {
+    background: #B32A45;
+    color: white;
+    padding: 8px 15px;
+    border: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
-.search-box-btn i {
-    font-size: 18px;
+.search-container button:hover {
+    background: #921F36;
 }
 
-.search-box.open .search-box-input {
-    width: 250px;
-    opacity: 1;
-    padding: 0 10px;
-}
-
-
-.Postadd-modal-overlay {
+.action-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -609,7 +741,7 @@ table td {
     align-items: center;
     z-index: 1000;
 }
-.Postadd-modal-content {
+.action-modal-content {
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -620,7 +752,7 @@ table td {
     gap: 30px;
     position: relative;
 }
-.Postadd-modal-close {
+.action-modal-close {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -630,45 +762,45 @@ table td {
     cursor: pointer;
     color: #B32A45;
 }
-.Postadd-modal-header {
+.action-modal-header {
     grid-column: 1 / -1;
     text-align: center;
     margin-bottom: 20px;
 }
-.Postadd-modal-header h2 {
+.action-modal-header h2 {
     color: #B32A45;
     margin: 0;
     font-size: 40px;
 }
-.Postadd-form-group {
+.action-form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-.Postadd-form-group label {
+.action-form-group label {
     font-weight: 600;
     color: #333;
 }
-.Postadd-form-group input, 
-.Postadd-form-group select, 
-.Postadd-form-group textarea {
+.action-form-group input, 
+.action-form-group select, 
+.action-form-group textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 5px;
     font-size: 14px;
 }
-.Postadd-form-group textarea {
+.action-form-group textarea {
     resize: vertical;
     min-height: 150px;
 }
-.Postadd-modal-footer {
+.action-modal-footer {
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
-.btn-add-post {
+.btn-add {
     background-color: #B32A45;
     color: white;
     border: none;
@@ -678,7 +810,7 @@ table td {
     transition: background-color 0.3s ease;
     font-size: 16px;
 }
-.btn-add-post:hover {
+.btn-add:hover {
     background-color: #921F36;
 }
 
@@ -693,6 +825,20 @@ table td {
 .sidebar.active .logo-container {
     display: block;
     width: auto;
+}
+
+.btn-edit {
+    background-color: #B32A45;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+.btn-edit:hover {
+    background-color: #921F36;
 }
 
 .logo-container {
@@ -743,8 +889,7 @@ table td {
 }
 
 
-/* Add these styles to your existing CSS file */
-#deleteModal {
+.delete-modal {
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -757,7 +902,7 @@ table td {
     justify-content: center;
 }
 
-#deleteModal .modal-content-approveModal {
+.delete-modal .modal-content-deleteModal {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -770,72 +915,7 @@ table td {
 }
 
 
-.Categoryadd-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none; 
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-.Categoryadd-modal-content {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    width: 900px;
-    padding: 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    position: relative;
-}
-.Categoryadd-modal-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #B32A45;
-}
-.Categoryadd-modal-header {
-    grid-column: 1 / -1;
-    text-align: center;
-    margin-bottom: 20px;
-}
-.Categoryadd-modal-header h2 {
-    color: #B32A45;
-    margin: 0;
-    font-size: 40px;
-}
-.Categoryadd-form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.Categoryadd-form-group label {
-    font-weight: 600;
-    color: #333;
-}
-.Categoryadd-form-group input, 
-.Categoryadd-form-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    font-size: 14px;
-}
-.Categoryadd-modal-footer {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
+
 
 
 #editCategoryModal {
@@ -866,9 +946,7 @@ table td {
     font-size: 16px;
     margin-right: auto;
     transition: 0.3s;
-    margin:10px 10px; 
-  
-    
+
 }
 
 .btn-add-user:hover {
@@ -967,13 +1045,7 @@ table td {
 .toggle-input:checked + .toggle-label::before {
     transform: translateX(25px);
 }
-.dashboard-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 8px;
-    overflow: hidden;
-}
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -1073,8 +1145,8 @@ table td {
 
 /* Quản lí bình luận */
 .section-title{
-    margin-bottom:15px;
     font-size: 35px;
+    margin-bottom: 15px;
 }
 .action-group {
     display: flex;
@@ -1263,4 +1335,5 @@ table td {
     color: white;
     order: 2;
 }
+
 
